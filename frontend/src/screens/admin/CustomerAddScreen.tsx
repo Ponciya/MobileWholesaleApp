@@ -13,11 +13,19 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Header from '../../components/Header';
-import { customerService } from '../../services/customerService';
+import { customerService, type Customer } from '../../services/customerService';
 
 export default function CustomerAddScreen({ navigation }: any) {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string;
+    business_name: string;
+    phone: string;
+    email: string;
+    address: string;
+    credit_limit: string;
+    status: NonNullable<Customer['status']>;
+  }>({
     name: '',
     business_name: '',
     phone: '',
